@@ -1,8 +1,10 @@
-const StatCard = (stat = 'Infected', number = 3_131_213) => {
+import { POLAND_MAIN_STATS_NAMES } from '@utils/constants';
+
+const StatCard = ({ name, value }) => {
   return (
     <div>
-      <h2>{number}</h2>
-      <p>{stat}</p>
+      <h2>{value}</h2>
+      <p>{POLAND_MAIN_STATS_NAMES[name]}</p>
     </div>
   );
 };

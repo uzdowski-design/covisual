@@ -1,8 +1,16 @@
 import StatCard from '@components/StatCard';
-const StatsList = ({ stats = [] }) => {
+const StatsList = ({ latestStats }) => {
+  const { total } = latestStats;
+  const totalArray = Object.entries(total);
+
   return (
     <div>
-      {stats.length && stats.map((stat) => <StatCard key={stat} stat={stat} />)}
+      {total &&
+        Object.entries(total).map((stat, index) => {
+          const name = stat[0];
+          const value = stat[1];
+          return <StatCard key={index} name={name} value={value} />;
+        })}
     </div>
   );
 };
