@@ -16,5 +16,8 @@
 }
 
 .gradient_line {
-    @apply before:z-20 before:inline-block before:h-[4px] before:w-[50px] before:bottom-0 before:rounded-lg before:opacity-70 before:bg-gradient-to-r before:from-sky-500 before:to-indigo-500;
+    @apply before:z-20 before:inline-block before:h-[8px] before:w-[50px] before:bottom-0 before:rounded-lg before:opacity-70 before:bg-gradient-to-r before:from-sky-500 before:to-indigo-500;
+}
+.gradient_line_wide {
+    @apply before:z-20 before:inline-block before:h-[4px] before:w-[250px] before:bottom-0 before:rounded-lg before:opacity-70 before:bg-gradient-to-r before:from-sky-500 before:to-indigo-500;
 }

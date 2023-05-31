@@ -13,8 +13,8 @@ export const POLAND_MAIN_STATS_NAMES = {
   dailyTested: 'Wykonane testy',
   dailyPositiveTests: 'Testy pozytywne',
   dailyDeceased: 'Zgony',
-  dailyDeceasedCovidOnly: 'Zgony wyłącznie z powodu COVID-19',
-  dailyDeceasedCovidWithOtherDiseases: 'Zgony z chorobami współistniejącymi',
+  dailyDeceasedCovidOnly: 'Zgony wyłącznie COVID-19',
+  dailyDeceasedCovidWithOtherDiseases: 'Zgony z innymi chorobami',
   dailyRecovered: 'Wyzdrowienia',
   dailyQuarantine: 'Kwarantanna'
 };
