@@ -6,8 +6,6 @@ export const GET = async (request) => {
     await connectToDb();
 
     const stats = await Stats.find({}).populate('statsDay');
-    // const test = await Stats.where();
-    console.log(stats);
 
     return new Response(JSON.stringify(stats), { status: 200 });
   } catch (error) {

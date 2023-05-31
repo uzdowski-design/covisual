@@ -1,27 +1,19 @@
-'use client';
+import { getData, getLatestRecord, getStructuredStats } from '@utils/statsData';
 
-import { useState, useEffect } from 'react';
+import Header from '@components/Header';
+import Map from '@components/Map';
+import Details from '@components/Details';
 
-export default function Home() {
-  const [stats, setStats] = useState([]);
-
-  const fetchStats = async () => {
-    const response = await fetch('/api/stats');
-    const data = await response.json();
-    console.log(data);
-    setStats(data);
-  };
-
-  useEffect(() => {
-    fetchStats();
-  }, []);
+export default async function Home() {
+  const data = await getData();
+  const allStats = getStructuredStats(data);
+  const latestStats = getLatestRecord(allStats);
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      {stats.map((stat) => (
-        <h1 key={stat._id}>{stat._id}</h1>
-      ))}
-      {JSON.stringify(stats)}
+    <main className="relative flex min-h-screen flex-col items-center w-full max-w-4xl mx-auto">
+      <Header />
+      <Map />
+      <Details country="Polska" allStats={allStats} latestStats={latestStats} />
     </main>
   );
 }
