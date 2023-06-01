@@ -15,6 +15,11 @@ const Details = ({ country, latestStats }) => {
         stats={latestStats}
         statsGroup={'daily'}
       />
+      <StatsSection
+        title={'Statystyki regionalne'}
+        stats={latestStats}
+        statsGroup={'regions'}
+      />
       <Footer sourceDate={latestStats.sourceDate} />
     </div>
   );

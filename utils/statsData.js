@@ -1,5 +1,9 @@
 export const getData = async () => {
-  const response = await fetch(`${process.env.URL}/api/stats`);
+  const response = await fetch(`${process.env.URL}/api/stats`, {
+    next: {
+      revalidate: 60 * 60
+    }
+  });
   if (!response.ok) {
     throw new Error('Failed to fetch data.');
   }
@@ -17,7 +21,7 @@ export const getStructuredStats = (stats) => {
 export const getLatestRecord = (stats) => {
   let latestRecord = stats[0];
   for (const [index, entry] of stats.entries()) {
-    if (new Date(entry.statsDate) > new Date(latestRecord.statsDate)) {
+    if (new Date(entry.sourceDate) > new Date(latestRecord.sourceDate)) {
       latestRecord = stats[index];
     }
   }
