@@ -60,3 +60,30 @@ const structuredEntry = (entry) => {
 
   return structuredEntry;
 };
+
+export const regionsSort = (a, b) => {
+  const nameA = removePolishSigns(a.name.toLowerCase()); // ignore upper and lowercase
+  const nameB = removePolishSigns(b.name.toLowerCase()); // ignore upper and lowercase
+  if (nameA < nameB) {
+    return -1;
+  }
+  if (nameA > nameB) {
+    return 1;
+  }
+
+  // names must be equal
+  return 0;
+};
+
+const removePolishSigns = (string) => {
+  string = string.replace('ę', 'e');
+  string = string.replace('ó', 'o');
+  string = string.replace('ą', 'a');
+  string = string.replace('ś', 's');
+  string = string.replace('ł', 'l');
+  string = string.replace('ż', 'z');
+  string = string.replace('ź', 'z');
+  string = string.replace('ć', 'c');
+  string = string.replace('ń', 'n');
+  return string;
+};
