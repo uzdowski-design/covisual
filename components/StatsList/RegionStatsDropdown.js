@@ -1,7 +1,7 @@
 const RegionStatsDropdown = ({ sortedRegions, region, handleChange }) => {
   return (
     <div className="mb-3">
-      <label className="mr-2" for="region">
+      <label className="mr-2" htmlFor="region">
         Województwo:{' '}
       </label>
       <select
