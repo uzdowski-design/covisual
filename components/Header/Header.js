@@ -1,6 +1,6 @@
 const Header = () => {
   return (
-    <div className="top-0 sticky w-full h-[5vh] text-center main_gradient drop-shadow-lg">
+    <div className="top-0 sticky w-full h-[5vh] text-center main_gradient drop-shadow-lg z-30">
       <h1 className="leading-[5vh]">COVISUAL</h1>
     </div>
   );
