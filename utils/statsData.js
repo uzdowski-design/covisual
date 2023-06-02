@@ -32,11 +32,38 @@ export const getRegionsData = (stats) => {
   return stats.regions;
 };
 
+export const getSortedRegionsData = (regions) => {
+  const sortedRegions = regions.map((element) => {
+    const newRegion = {};
+    newRegion.name = element.name;
+    newRegion.population = element.population;
+    newRegion.totalInfected = element.totalInfected;
+
+    newRegion.newlyInfected = element.newlyInfected;
+    newRegion.reInfected = element.reInfected;
+
+    newRegion.recovered = element.recovered;
+    newRegion.deceased = element.deceased;
+
+    newRegion.deceasedCovidOnly = element.deceasedCovidOnly;
+    newRegion.deceasedWithOtherDiseases = element.deceasedWithOtherDiseases;
+
+    newRegion.testsDone = element.testsDone;
+    newRegion.testsPositive = element.testsPositive;
+    newRegion.quarantied = element.quarantied;
+    newRegion.totalInfectedPer10k = element.totalInfectedPer10k;
+    newRegion.newlyInfectedPer10k = element.newlyInfectedPer10k;
+    newRegion.reInfectedPer10k = element.reInfectedPer10k;
+    return newRegion;
+  });
+  return sortedRegions;
+};
+
 const structuredEntry = (entry) => {
   const structuredEntry = {};
   const total = {};
   const daily = {};
-  const regions = entry.regions;
+  const regions = getSortedRegionsData(entry.regions);
 
   structuredEntry._id = entry._id;
   structuredEntry.statsDate = entry.statsDate;

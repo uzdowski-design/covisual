@@ -8,7 +8,7 @@
 }
 
 .vertical_light_gradient {
-    @apply bg-gradient-to-b from-cyan-200 to-blue-200;
+    @apply bg-gradient-to-b from-sky-100 to-cyan-100;
 }
 
 .vertical_dark_gradient {

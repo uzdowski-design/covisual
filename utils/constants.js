@@ -34,8 +34,8 @@ export const POLAND_REGION_STATS_NAMES = {
   recovered: 'Wyzdrowienia',
   reInfected: 'Ponownie zainfekowani',
   totalInfected: 'Wszyscy zainfekowani',
-  newlyInfectedPer10k: 'Nowi zainfekowani / 10K',
-  reInfectedPer10k: 'Ponownie zainfekowani / 10K',
-  totalInfectedPer10k: 'Wszyscy zainfekowani / 10K',
+  newlyInfectedPer10k: 'Nowi zainf. / 10K',
+  reInfectedPer10k: 'Ponownie zainf. / 10K',
+  totalInfectedPer10k: 'Wszyscy zainf. / 10K',
   newlyInfected: 'Nowi zainfekowani'
 };
