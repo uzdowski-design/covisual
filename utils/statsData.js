@@ -1,4 +1,4 @@
-export const getData = async () => {
+export const getDataPoland = async () => {
   const response = await fetch(`${process.env.URL}/api/stats`, {
     next: {
       revalidate: 60 * 60
@@ -10,7 +10,18 @@ export const getData = async () => {
   return response.json();
 };
 
-export const getStructuredStats = (stats) => {
+export const getDataGlobal = async () => {
+  const result = await fetch(process.env.GLOBAL_STATS_URL, {
+    headers: {
+      'X-RapidAPI-Key': process.env.RAPID_API_KEY,
+      'X-RapidAPI-Host': process.env.RAPID_API_HOST
+    }
+  });
+  const data = await result.json();
+  return data;
+};
+
+export const getStructuredStatsPoland = (stats) => {
   const structuredStats = [];
   for (const [index, entry] of stats.entries()) {
     structuredStats.push(structuredEntry(entry));
@@ -18,7 +29,7 @@ export const getStructuredStats = (stats) => {
   return structuredStats;
 };
 
-export const getLatestRecord = (stats) => {
+export const getLatestRecordPoland = (stats) => {
   let latestRecord = stats[0];
   for (const [index, entry] of stats.entries()) {
     if (new Date(entry.sourceDate) > new Date(latestRecord.sourceDate)) {
