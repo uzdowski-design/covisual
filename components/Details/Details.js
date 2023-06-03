@@ -1,33 +1,33 @@
 import Footer from '@components/Footer';
 import StatsSection from '@components/StatsSection';
 
-const Details = ({ country, latestStats }) => {
+const Details = ({ country, latestStatsPoland }) => {
   return (
     <div className="absolute z-10 top-[80%] vertical_light_gradient w-full text-center min-h-[85vh] rounded-t-lg gradient_line">
       <h2 className="text-4xl mt-3">{country}</h2>
-      <p className="text-gray-500">{latestStats.statsDay}</p>
-      {latestStats.total && (
+      <p className="text-gray-500">{latestStatsPoland.statsDay}</p>
+      {latestStatsPoland.total && (
         <StatsSection
           title={'Statystyki ogólne'}
-          stats={latestStats}
+          stats={latestStatsPoland}
           statsGroup={'total'}
         />
       )}
-      {latestStats.daily && (
+      {latestStatsPoland.daily && (
         <StatsSection
           title={'Statystyki dzienne'}
-          stats={latestStats}
+          stats={latestStatsPoland}
           statsGroup={'daily'}
         />
       )}
-      {latestStats.regions && (
+      {latestStatsPoland.regions && (
         <StatsSection
           title={'Statystyki regionalne'}
-          stats={latestStats}
+          stats={latestStatsPoland}
           statsGroup={'regions'}
         />
       )}
-      <Footer sourceDate={latestStats.sourceDate} />
+      <Footer sourceDate={latestStatsPoland.sourceDate} />
     </div>
   );
 };
