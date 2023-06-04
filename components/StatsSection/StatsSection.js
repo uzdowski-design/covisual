@@ -1,4 +1,4 @@
-import StatsList from '@components/StatsList';
+import StatsList from '@components/StatsList/StatsList';
 import TitleWrapper from '@components/TitleWrapper/TitleWrapper';
 
 const StatsSection = ({ title, stats, statsGroup = null }) => {

@@ -1,4 +1,4 @@
-import StatsSection from '@components/StatsSection';
+import StatsSection from '@components/StatsSection/StatsSection';
 
 const Details = ({ country, latestStatsPoland = null }) => {
     return (
