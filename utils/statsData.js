@@ -142,7 +142,7 @@ const removePolishSigns = (string) => {
     return string;
 };
 
-export const removeIncorrectActiveCases = (cases) => {
-    if (cases === null || cases === undefined || cases < 0) return 0;
-    return cases;
+export const removeEmptyNumbers = (number) => {
+    if (number === null || number === undefined || number < 0) return 0;
+    return number;
 };
