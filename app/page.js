@@ -5,9 +5,9 @@ import {
   getStructuredStatsPoland
 } from '@utils/statsData';
 
-import Header from '@components/Header';
 import Map from '@components/Map';
 import Details from '@components/Details';
+import Sidebar from '@components/Sidebar/Sidebar';
 
 export default async function Home() {
   const dataPoland = await getDataPoland();
@@ -17,14 +17,14 @@ export default async function Home() {
   const globalStats = await getDataGlobal();
 
   return (
-    <main className="relative flex min-h-screen flex-col items-center w-full max-w-4xl mx-auto">
-      <Header />
+    <div className="relative flex min-h-screen flex-col items-center w-full max-w-4xl mx-auto overflow-x-hidden">
       <Map />
       <Details
         country="Polska"
         allStatsPoland={allStatsPoland}
         latestStatsPoland={latestStatsPoland}
       />
-    </main>
+      <Sidebar />
+    </div>
   );
 }

@@ -1,4 +1,3 @@
-import Footer from '@components/Footer';
 import StatsSection from '@components/StatsSection';
 
 const Details = ({ country, latestStatsPoland }) => {
@@ -27,7 +26,6 @@ const Details = ({ country, latestStatsPoland }) => {
           statsGroup={'regions'}
         />
       )}
-      <Footer sourceDate={latestStatsPoland.sourceDate} />
     </div>
   );
 };
