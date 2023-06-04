@@ -1,97 +1,46 @@
-'use client';
+import {
+    countriesSortByActiveCases,
+    removeIncorrectActiveCases
+} from '@utils/statsData';
 
-import { useEffect, useState } from 'react';
+const Sidebar = ({ globalStats }) => {
+    const isVisible = true;
+    const right = isVisible ? 'right-0' : '-right-[100vw]';
 
-const Sidebar = () => {
-  //   const [isVisible, setIsVisible] = useState(false);
-  //   const [right, setRight] = useState('right-0');
-
-  //   useEffect(() => {
-  //     if (isVisible) {
-  //       setRight('right-0');
-  //     } else {
-  //       setRight('-right-[100vw]');
-  //     }
-  //     setTimeout(() => {
-  //       setIsVisible((prev) => !prev);
-  //     }, 4000);
-  //   }, [isVisible]);
-  const isVisible = true;
-  const right = isVisible ? 'right-0' : '-right-[100vw]';
-  return (
-    <div
-      className={`fixed h-[90vh] w-[80vw] text-center vertical_light_gradient ${right} top-[5vh] z-[100] overflow-scroll rounded-l-lg transition-all`}
-    >
-      <h2>World info</h2>
-      <ul className="">
-        <li>1</li>
-        <li>2</li>
-        <li>3</li>
-        <li>4</li>
-        <li>5</li>
-        <li>1</li>
-        <li>2</li>
-        <li>3</li>
-        <li>4</li>
-        <li>5</li>
-        <li>1</li>
-        <li>2</li>
-        <li>3</li>
-        <li>4</li>
-        <li>5</li>
-        <li>1</li>
-        <li>2</li>
-        <li>3</li>
-        <li>4</li>
-        <li>5</li>
-        <li>1</li>
-        <li>2</li>
-        <li>3</li>
-        <li>4</li>
-        <li>5</li>
-        <li>1</li>
-        <li>2</li>
-        <li>3</li>
-        <li>4</li>
-        <li>5</li>
-        <li>1</li>
-        <li>2</li>
-        <li>3</li>
-        <li>4</li>
-        <li>5</li>
-        <li>1</li>
-        <li>2</li>
-        <li>3</li>
-        <li>4</li>
-        <li>5</li>
-        <li>1</li>
-        <li>2</li>
-        <li>3</li>
-        <li>4</li>
-        <li>5</li>
-        <li>1</li>
-        <li>2</li>
-        <li>3</li>
-        <li>4</li>
-        <li>5</li>
-        <li>1</li>
-        <li>2</li>
-        <li>3</li>
-        <li>4</li>
-        <li>5</li>
-        <li>1</li>
-        <li>2</li>
-        <li>3</li>
-        <li>4</li>
-        <li>5</li>
-        <li>1</li>
-        <li>2</li>
-        <li>3</li>
-        <li>4</li>
-        <li>5</li>
-      </ul>
-    </div>
-  );
+    const countriesSortedByActiveCases = globalStats.response.sort(
+        countriesSortByActiveCases
+    );
+    console.log(countriesSortedByActiveCases);
+    return (
+        <div
+            className={`fixed h-[90vh] w-[80vw] text-center vertical_light_gradient ${right} top-[5vh] z-[100] overflow-scroll rounded-l-lg transition-all`}
+        >
+            <h2>World info</h2>
+            <ul className="">
+                <div className="flex flex-row justify-between mx-4 border-b-sky-300 border-b-2">
+                    <p>
+                        <strong>Region</strong>
+                    </p>
+                    <p>
+                        <strong>Active Cases</strong>
+                    </p>
+                </div>
+                {countriesSortedByActiveCases.map((entry, index) => (
+                    <div
+                        className="flex flex-row justify-between mx-4 border-b-sky-200 border-b-2"
+                        key={index}
+                    >
+                        <p>{entry.country}</p>
+                        <p>
+                            {removeIncorrectActiveCases(
+                                entry.cases.active
+                            ).toLocaleString('pl-PL')}
+                        </p>
+                    </div>
+                ))}
+            </ul>
+        </div>
+    );
 };
 
 export default Sidebar;

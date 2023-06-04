@@ -24,7 +24,7 @@ export default async function Home() {
         allStatsPoland={allStatsPoland}
         latestStatsPoland={latestStatsPoland}
       />
-      <Sidebar />
+      <Sidebar globalStats={globalStats} />
     </div>
   );
 }
