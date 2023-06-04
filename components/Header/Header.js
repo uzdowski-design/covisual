@@ -13,7 +13,7 @@ const Header = () => {
             <Link href="/">
                 <FontAwesomeIcon className="h-[70%] p-2" icon={faVirusCovid} />
             </Link>
-            <h1 className="leading-[5vh] text-lg">COVISUAL</h1>
+            <h1 className="leading-[5vh] text-lg tracking-widest">COVISUAL</h1>
             <FontAwesomeIcon
                 onClick={() => setIsSidebarVisible((prev) => !prev)}
                 className="h-[70%] p-2"
