@@ -5,7 +5,7 @@ import {
     getStructuredStatsPoland
 } from '@utils/statsData';
 
-import Map from '@components/Map/Map';
+import CovidMap from '@components/CovidMap/CovidMap';
 import Details from '@components/Details/Details';
 import Sidebar from '@components/Sidebar/Sidebar';
 
@@ -18,7 +18,7 @@ export default async function Home() {
 
     return (
         <div className="relative flex min-h-screen flex-col items-center w-full max-w-4xl mx-auto overflow-x-hidden">
-            <Map />
+            <CovidMap stats={latestStatsPoland} />
             <Details
                 country="Polska"
                 allStatsPoland={allStatsPoland}

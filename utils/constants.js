@@ -56,3 +56,9 @@ export const GLOBAL_STATS_NAMES = {
     day: 'Data',
     time: 'Czas'
 };
+
+export const MAP_LEVELS_COLORS = {
+    LOW: '#bfdbfe', // blue 200
+    MEDIUM: '#3b82f6', // blue 500
+    HIGH: '#1e40af' // blue 800
+};
