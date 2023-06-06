@@ -1,8 +1,8 @@
 'use client';
 import { MAP_LEVELS_COLORS } from '@utils/constants';
 import { getStatsLevel, getMaxInfected } from '@utils/statsData';
-import { features } from '@utils/voivodeships_min.json';
-import { MapContainer, TileLayer, GeoJSON } from 'react-leaflet';
+import features from '@utils/voivodeships_min.json';
+import { MapContainer, GeoJSON } from 'react-leaflet';
 // import 'leaflet/dist/leaflet.css';
 
 const CovidMap = ({ stats }) => {
