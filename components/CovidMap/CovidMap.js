@@ -1,4 +1,5 @@
-'use client';
+"use client";
+
 import { MAP_LEVELS_COLORS } from '@utils/constants';
 import { getStatsLevel, getMaxInfected } from '@utils/statsData';
 import features from '@utils/voivodeships_min.json';
