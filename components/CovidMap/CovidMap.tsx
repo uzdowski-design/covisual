@@ -2,9 +2,11 @@
 
 import { MAP_LEVELS_COLORS } from '@utils/constants';
 import { getStatsLevel, getMaxInfected } from '@utils/statsData';
-import features from '@utils/voivodeships_min.json';
+import {geoJSONData }from '@utils/voivodeships_min';
 import { MapContainer, GeoJSON } from 'react-leaflet';
 // import 'leaflet/dist/leaflet.css';
+
+const {features } = geoJSONData;
 
 const CovidMap = ({ stats }) => {
     const mapStyle = {
@@ -38,7 +40,6 @@ const CovidMap = ({ stats }) => {
                 minZoom={5.5}
                 zoomControl={false}
                 center={[48.629675, 19.21223]}
-                bindTooltip={true}
             >
                 <GeoJSON
                     style={mapStyle}

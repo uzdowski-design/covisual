@@ -25,7 +25,7 @@ export default async function Home() {
             <DynamicCovidMap stats={latestStatsPoland} />
             <Details
                 country="Polska"
-                allStatsPoland={allStatsPoland}
+                // allStatsPoland={allStatsPoland}
                 latestStatsPoland={latestStatsPoland}
             />
             <Sidebar globalStats={globalStats} />

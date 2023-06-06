@@ -1,4 +1,5 @@
 import { Inter } from 'next/font/google';
+
 import { ContextWrapper } from '@context/state';
 import {
     getDataPoland,
