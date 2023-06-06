@@ -146,3 +146,19 @@ export const removeEmptyNumbers = (number) => {
     if (number === null || number === undefined || number < 0) return 0;
     return number;
 };
+
+export const getStatsLevel = (stat, max) => {
+    if (stat < max / 3) return 'LOW';
+    if (stat >= max / 3 && stat < (max / 3) * 2) return 'MEDIUM';
+    return 'HIGH';
+};
+
+export const getMaxInfected = (stats) => {
+    let max = 0;
+    stats.forEach((stat) => {
+        if (stat.totalInfected > max) {
+            max = stat.totalInfected;
+        }
+    });
+    return max;
+};
