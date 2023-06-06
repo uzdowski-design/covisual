@@ -1,5 +1,5 @@
 export const getDataPoland = async () => {
-    const response = await fetch(`${process.env.URL}/api/stats`, {
+    const response = await fetch(`http://${process.env.VERCEL_URL}/api/stats`, {
         next: {
             revalidate: 60 * 60 // 1h
         }
