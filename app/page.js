@@ -4,10 +4,14 @@ import {
     getLatestRecordPoland,
     getStructuredStatsPoland
 } from '@utils/statsData';
+import dynamic from 'next/dynamic';
 
-import Map from '@components/Map/Map';
 import Details from '@components/Details/Details';
 import Sidebar from '@components/Sidebar/Sidebar';
+
+const DynamicCovidMap = dynamic(() => import('@components/CovidMap/CovidMap'), {
+    ssr: false
+});
 
 export default async function Home() {
     const dataPoland = await getDataPoland();
@@ -18,7 +22,7 @@ export default async function Home() {
 
     return (
         <div className="relative flex min-h-screen flex-col items-center w-full max-w-4xl mx-auto overflow-x-hidden">
-            <Map />
+            <DynamicCovidMap stats={latestStatsPoland} />
             <Details
                 country="Polska"
                 allStatsPoland={allStatsPoland}

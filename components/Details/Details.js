@@ -2,7 +2,7 @@ import StatsSection from '@components/StatsSection/StatsSection';
 
 const Details = ({ country, latestStatsPoland = null }) => {
     return (
-        <div className="absolute z-10 top-[80%] vertical_light_gradient w-full text-center min-h-[85vh] rounded-t-lg gradient_line">
+        <div className="absolute z-10 top-[70%] vertical_light_gradient w-full text-center min-h-[85vh] rounded-t-lg gradient_line">
             <h2 className="text-4xl mt-3">{country}</h2>
             <p className="text-gray-500">{latestStatsPoland?.statsDay}</p>
             {latestStatsPoland?.total && (
