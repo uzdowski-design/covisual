@@ -5,13 +5,13 @@ export const getDataPoland = async () => {
         }
     });
     if (!response.ok) {
-        throw new Error('Failed to fetch data.');
+        throw new Error('Failed to fetch Poland data.');
     }
     return response.json();
 };
 
 export const getDataGlobal = async () => {
-    const result = await fetch(process.env.GLOBAL_STATS_URL, {
+    const response = await fetch(process.env.GLOBAL_STATS_URL, {
         headers: {
             'X-RapidAPI-Key': process.env.RAPID_API_KEY,
             'X-RapidAPI-Host': process.env.RAPID_API_HOST
@@ -20,7 +20,10 @@ export const getDataGlobal = async () => {
             revalidate: 60 * 60 // 1h
         }
     });
-    const data = await result.json();
+    if (!response.ok) {
+        throw new Error('Failed to fetch Global data.');
+    }
+    const data = response.json();
     return data;
 };
 
