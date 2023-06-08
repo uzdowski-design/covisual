@@ -1,4 +1,4 @@
-const Footer = ({ sourceDate }) => {
+const Footer = ({ sourceDate }: {sourceDate: string}) => {
   return (
     <div className="bottom-0 relative  w-full h-[5vh] text-center main_gradient flex justify-around">
       <h3 className="leading-[5vh] text-xs">uzdowski.design</h3>

@@ -1,4 +1,4 @@
-{
+const polandStats = {
   _id: '64770a783b221c821a022387',
   statsDate: '2023-05-31T08:51:04.155Z',
   statsDay: '31-05-2023',
@@ -342,4 +342,30 @@
   ],
   updated: '2023-05-31T08:51:04.476Z',
   __v: 0
+}
+
+const globalStats = {
+  get: 'statistics',
+  parameters: [],
+  errors: [],
+  results: 238,
+  response: [],
+}
+
+const globalStatsResponse = {
+  continent: 'Europe',
+  country: 'Isle-of-Man',
+  population: 85732,
+  cases: {
+    new: null,
+    active: null,
+    critical: null,
+    recovered: null,
+    '1M_pop': '443335',
+    total: 38008
+  },
+  deaths: { new: null, '1M_pop': '1353', total: 116 },
+  tests: { '1M_pop': '1758422', total: 150753 },
+  day: '2023-06-07',
+  time: '2023-06-07T19:00:08+00:00'
 }

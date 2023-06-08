@@ -6,11 +6,12 @@ import { getStatsLevel, getMaxInfected } from '@utils/statsData';
 import geoJSONData from '@utils/voivodeships_min.json';
 import { MapContainer, GeoJSON } from 'react-leaflet';
 import { GeoJsonObject } from 'geojson';
+import { StructuredEntry } from '@utils/statsData';
 
 // import 'leaflet/dist/leaflet.css';
 
 
-const CovidMap = ({ stats }) => {
+const CovidMap = ({ stats }: {stats: StructuredEntry} ): JSX.Element => {
     const mapStyle = {
         weight: 2,
         fullOpacity: 1

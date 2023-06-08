@@ -1,4 +1,12 @@
-const RegionStatsDropdown = ({ sortedRegions, region, handleChange }) => {
+import {NewRegion} from '@utils/statsData';
+
+type RegionStatsDropdownProps = {
+  sortedRegions: NewRegion[];
+  region: NewRegion,
+  handleChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
+}
+
+const RegionStatsDropdown = ({ sortedRegions, region, handleChange }: RegionStatsDropdownProps) => {
   return (
     <div className="mb-3">
       <label className="mr-2" htmlFor="region">

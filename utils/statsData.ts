@@ -1,3 +1,98 @@
+export type StructuredEntry ={
+    _id: string,
+    statsDate: string,
+    statsDay: string,
+    sourceDate: string,
+    total: Total,
+    daily: Daily,
+    regions: NewRegion[],
+};
+
+type Total = {
+    totalInfected: number,
+    newlyInfected: number,
+    reInfected: number,
+    deceased: number,
+    recovered: number,
+}
+type Daily = {
+    dailyTotalInfected?: number,
+    dailyNewlyInfected?: number,
+    dailyReInfected?: number,
+    dailyTested?: number,
+    dailyPositiveTests?: number,
+    dailyDeceased?: number,
+    dailyDeceasedCovidOnly?: number,
+    dailyDeceasedCovidWithOtherDiseases?: number,
+    dailyRecovered?: number,
+    dailyQuarantine?: number,
+}
+export type Regions = {
+    name: string,
+    population: number,
+    deceased: number,
+    deceasedCovidOnly: number,
+    deceasedWithOtherDiseases: number,
+    quarantied: number,
+    testsDone: number,
+    testsPositive: number,
+    testsNegative: number,
+    testsFromPOZ: number,
+    testsOthers: number,
+    recovered: number,
+    reInfected: number,
+    totalInfected: number,
+    newlyInfectedPer10k: number,
+    reInfectedPer10k: number,
+    totalInfectedPer10k: number,
+    newlyInfected: number
+}
+export type NewRegion = {
+    name: string,
+    population: number,
+    totalInfected: number,
+    newlyInfected: number,
+    reInfected: number,
+    recovered: number,
+    deceased: number,
+    deceasedCovidOnly: number,
+    deceasedWithOtherDiseases: number,
+    testsDone: number,
+    testsPositive: number,
+    quarantied: number,
+    totalInfectedPer10k: number,
+    newlyInfectedPer10k: number,
+    reInfectedPer10k: number,
+}
+
+type NumberOrNull = number | null
+
+export type GlobalStatsRegion = {
+    continent: string,
+    country: string,
+    population: NumberOrNull,
+    cases: {
+      new: NumberOrNull,
+      active: NumberOrNull,
+      critical: NumberOrNull,
+      recovered: NumberOrNull,
+      '1M_pop': string,
+      total: NumberOrNull
+    },
+    deaths: { new: NumberOrNull, '1M_pop': string, total: NumberOrNull },
+    tests: { '1M_pop': string, total: NumberOrNull },
+    day: string,
+    time: string
+  }
+
+export type GlobalStats = {
+    get: string,
+    parameters: [],
+    errors: [],
+    results: NumberOrNull,
+    response: GlobalStatsRegion[],
+  }
+
 export const getDataPoland = async () => {
     const response = await fetch(`http://${process.env.VERCEL_URL}/api/stats`, {
         next: {
@@ -46,28 +141,11 @@ export const getLatestRecordPoland = (stats) => {
     return latestRecord;
 };
 
-export const getRegionsData = (stats) => {
+export const getRegionsData = (stats): Regions => {
     return stats.regions;
 };
 
 export const getSortedRegionsData = (regions) => {
-    type NewRegion = {
-        name: string,
-        population: number,
-        totalInfected: number,
-        newlyInfected: number,
-        reInfected: number,
-        recovered: number,
-        deceased: number,
-        deceasedCovidOnly: number,
-        deceasedWithOtherDiseases: number,
-        testsDone: number,
-        testsPositive: number,
-        quarantied: number,
-        totalInfectedPer10k: number,
-        newlyInfectedPer10k: number,
-        reInfectedPer10k: number,
-    }
 
     const sortedRegions = regions.map((element) => {
         const newRegion: NewRegion = {
@@ -97,58 +175,8 @@ export const getSortedRegionsData = (regions) => {
 };
 
 const structuredEntry = (entry) => {
-    type StructuredEntry ={
-        _id: string,
-        statsDate: string,
-        statsDay: string,
-        sourceDate: string,
-        total: Total,
-        daily: Daily,
-        regions: Regions,
-    };
-
-    type Total = {
-        totalInfected: number,
-        newlyInfected: number,
-        reInfected: number,
-        deceased: number,
-        recovered: number,
-    }
-    type Daily = {
-        dailyTotalInfected?: number,
-        dailyNewlyInfected?: number,
-        dailyReInfected?: number,
-        dailyTested?: number,
-        dailyPositiveTests?: number,
-        dailyDeceased?: number,
-        dailyDeceasedCovidOnly?: number,
-        dailyDeceasedCovidWithOtherDiseases?: number,
-        dailyRecovered?: number,
-        dailyQuarantine?: number,
-    }
-    type Regions = {
-        name: string,
-        population: number,
-        deceased: number,
-        deceasedCovidOnly: number,
-        deceasedWithOtherDiseases: number,
-        quarantied: number,
-        testsDone: number,
-        testsPositive: number,
-        testsNegative: number,
-        testsFromPOZ: number,
-        testsOthers: number,
-        recovered: number,
-        reInfected: number,
-        totalInfected: number,
-        newlyInfectedPer10k: number,
-        reInfectedPer10k: number,
-        totalInfectedPer10k: number,
-        newlyInfected: number
-    }
-    
-    const daily: Daily ={}
-    const regions: Regions = getSortedRegionsData(entry.regions);
+    let daily: Daily ={}
+    const regions: Regions[] = getSortedRegionsData(entry.regions);
 
     const total: Total = {
         totalInfected: entry.totalInfected,
@@ -160,7 +188,7 @@ const structuredEntry = (entry) => {
 
     for (const key in entry) {
         if (key.includes('daily')) {
-            daily[key] = daily[key];
+            daily[key] = entry[key];
         }
     }
 
