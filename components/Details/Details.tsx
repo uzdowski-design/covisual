@@ -3,14 +3,16 @@ import { StructuredEntry } from '@utils/statsData';
 
 type DetailsProps = {
     country: string,
-    latestStatsPoland: StructuredEntry | null
+    latestStatsPoland: StructuredEntry,
+    allStatsPoland: StructuredEntry[]
 }
 
-const Details = ({ country, latestStatsPoland = null }: DetailsProps) => {
+const Details = ({ country, allStatsPoland, latestStatsPoland }: DetailsProps) => {
     return (
-        <div className="absolute z-10 top-[70%] vertical_light_gradient w-full text-center min-h-[85vh] rounded-t-lg gradient_line">
+        <div className="absolute z-10 top-[60%] vertical_light_gradient w-full text-center rounded-t-lg gradient_line">
             <h2 className="text-4xl mt-3">{country}</h2>
             <p className="text-gray-500">{latestStatsPoland?.statsDay}</p>
+            <div className='mb-20'>
             {latestStatsPoland?.total && (
                 <StatsSection
                     title={'Statystyki ogólne'}
@@ -18,20 +20,27 @@ const Details = ({ country, latestStatsPoland = null }: DetailsProps) => {
                     statsGroup={'total'}
                 />
             )}
-            {latestStatsPoland?.daily && (
+
+            {latestStatsPoland?.daily  && (
                 <StatsSection
                     title={'Statystyki dzienne'}
                     stats={latestStatsPoland}
                     statsGroup={'daily'}
+                    allStatsPoland={allStatsPoland}
+                    showChart={true}
                 />
             )}
+
             {latestStatsPoland?.regions && (
                 <StatsSection
                     title={'Statystyki regionalne'}
                     stats={latestStatsPoland}
                     statsGroup={'regions'}
+                    allStatsPoland={allStatsPoland}
+                    showChart={true}
                 />
             )}
+            </div>
         </div>
     );
 };

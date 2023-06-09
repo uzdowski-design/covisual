@@ -13,8 +13,8 @@ type SidebarProps = {
 
 
 const Sidebar = ({ globalStats }: SidebarProps) => {
-    const [isSidebarVisible, setIsSidebarVisible] = useAppContext();
-    const right = isSidebarVisible ? 'right-0' : '-right-[100vw]';
+    const [state, setState] = useAppContext();
+    const right = state.isSidebarVisible ? 'right-0' : '-right-[100vw]';
 
     const countriesSortedByActiveCases = globalStats.response.sort(
         countriesSortByActiveCases
@@ -40,7 +40,7 @@ const Sidebar = ({ globalStats }: SidebarProps) => {
                         href={`/stats/${entry.country}`
                             .replace(/\s+/g, '-')
                             .toLowerCase()}
-                        onClick={() => setIsSidebarVisible((prev) => !prev)}
+                        onClick={() => setState((prev) => ({...prev, isSidebarVisible: !prev.isSidebarVisible}))}
                     >
                         <li className="flex flex-row justify-between mx-4 border-b-sky-200 border-b-2">
                             <p>{entry.country}</p>
