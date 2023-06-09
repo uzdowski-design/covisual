@@ -1,4 +1,6 @@
-const TitleWrapper = ({ title }) => {
+
+
+const TitleWrapper = ({ title }: {title: string}) => {
   return (
     <div className="text-2xl my-3">
       <h2>{title}</h2>

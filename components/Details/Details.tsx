@@ -1,6 +1,12 @@
 import StatsSection from '@components/StatsSection/StatsSection';
+import { StructuredEntry } from '@utils/statsData';
 
-const Details = ({ country, latestStatsPoland = null }) => {
+type DetailsProps = {
+    country: string,
+    latestStatsPoland: StructuredEntry | null
+}
+
+const Details = ({ country, latestStatsPoland = null }: DetailsProps) => {
     return (
         <div className="absolute z-10 top-[70%] vertical_light_gradient w-full text-center min-h-[85vh] rounded-t-lg gradient_line">
             <h2 className="text-4xl mt-3">{country}</h2>

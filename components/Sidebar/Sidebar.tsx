@@ -5,8 +5,14 @@ import {
 } from '@utils/statsData';
 import Link from 'next/link';
 import { useAppContext } from '@context/state';
+import { GlobalStats } from '@utils/statsData';
 
-const Sidebar = ({ globalStats }) => {
+type SidebarProps = {
+    globalStats: GlobalStats;
+};
+
+
+const Sidebar = ({ globalStats }: SidebarProps) => {
     const [isSidebarVisible, setIsSidebarVisible] = useAppContext();
     const right = isSidebarVisible ? 'right-0' : '-right-[100vw]';
 

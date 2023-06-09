@@ -1,4 +1,5 @@
 import { Inter } from 'next/font/google';
+
 import { ContextWrapper } from '@context/state';
 import {
     getDataPoland,
@@ -10,6 +11,7 @@ import Header from '@components/Header/Header';
 import Footer from '@components/Footer/Footer';
 
 import '@styles/globals.css';
+import { ReactNode } from 'react';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -18,7 +20,7 @@ export const metadata = {
     description: 'Wizualizacja danych COVID-19'
 };
 
-export default async function RootLayout({ children }) {
+export default async function RootLayout({ children }: { children: ReactNode }): Promise<JSX.Element>  {
     const latestStatsPoland = getLatestRecordPoland(
         getStructuredStatsPoland(await getDataPoland())
     );

@@ -1,7 +1,7 @@
 'use client';
 import { createContext, useContext, useState } from 'react';
 
-const AppContext = createContext();
+const AppContext = createContext(null);
 
 export function ContextWrapper({ children }) {
     const [isSidebarVisible, setIsSidebarVisible] = useState(false);

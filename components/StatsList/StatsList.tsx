@@ -5,12 +5,17 @@ import {
     POLAND_REGION_STATS_NAMES
 } from '@utils/constants';
 import { useState } from 'react';
-import { regionsSort } from '@utils/statsData';
+import { StructuredEntry, regionsSort } from '@utils/statsData';
 
 import StatCard from '@components/StatCard/StatCard';
 import RegionStatsDropdown from './RegionStatsDropdown';
 
-const StatsList = ({ stats, statsGroup }) => {
+type StatsListProps = {
+    stats: StructuredEntry,
+    statsGroup: string,
+}
+
+const StatsList = ({ stats, statsGroup }:StatsListProps ) => {
     const { total, daily, regions } = stats;
     const group = {
         total,
@@ -31,7 +36,7 @@ const StatsList = ({ stats, statsGroup }) => {
             return (
                 <div className="flex flex-wrap justify-center gap-4 mx-2">
                     {statsToDisplay &&
-                        Object.entries(statsToDisplay).map((stat, index) => {
+                        Object.entries(statsToDisplay).map((stat, index)  => {
                             return (
                                 <StatCard
                                     key={index}
