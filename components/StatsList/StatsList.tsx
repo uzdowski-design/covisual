@@ -12,11 +12,11 @@ import RegionStatsDropdown from './RegionStatsDropdown';
 import { useAppContext } from '@context/state';
 
 type StatsListProps = {
-    stats: StructuredEntry,
-    statsGroup: string,
-}
+    stats: StructuredEntry;
+    statsGroup: string;
+};
 
-const StatsList = ({ stats, statsGroup }:StatsListProps ) => {
+const StatsList = ({ stats, statsGroup }: StatsListProps) => {
     const { total, daily, regions } = stats;
     const group = {
         total,
@@ -39,7 +39,7 @@ const StatsList = ({ stats, statsGroup }:StatsListProps ) => {
             return (
                 <div className="flex flex-wrap justify-center gap-4 mx-2">
                     {statsToDisplay &&
-                        Object.entries(statsToDisplay).map((stat, index)  => {
+                        Object.entries(statsToDisplay).map((stat, index) => {
                             return (
                                 <StatCard
                                     key={index}
@@ -58,7 +58,7 @@ const StatsList = ({ stats, statsGroup }:StatsListProps ) => {
                 const newRegion = regions.filter(
                     (region) => region.name === e.target.value
                 );
-                setState((prev) => ({...prev, region: newRegion[0]}));
+                setState((prev) => ({ ...prev, region: newRegion[0] }));
             };
 
             return (

@@ -107,7 +107,7 @@ export const getDataPoland = async () => {
 };
 
 export const getDataGlobal = async () => {
-    const response = await fetch(process.env.GLOBAL_STATS_URL, {
+    const response = await fetch(`${process.env.GLOBAL_STATS_URL}/statistics`, {
         headers: {
             'X-RapidAPI-Key': process.env.RAPID_API_KEY,
             'X-RapidAPI-Host': process.env.RAPID_API_HOST
@@ -118,6 +118,23 @@ export const getDataGlobal = async () => {
     });
     if (!response.ok) {
         throw new Error('Failed to fetch Global data.');
+    }
+    const data = await response.json();
+    return data;
+};
+
+export const getCountryHistoricaldata = async (country) => {
+    const response = await fetch(`${process.env.GLOBAL_STATS_URL}/history?country=${country}`, {
+        headers: {
+            'X-RapidAPI-Key': process.env.RAPID_API_KEY,
+            'X-RapidAPI-Host': process.env.RAPID_API_HOST
+        },
+        next: {
+            revalidate: 60 * 60 // 1h
+        }
+    });
+    if (!response.ok) {
+        throw new Error('Failed to fetch country historical data.');
     }
     const data = await response.json();
     return data;

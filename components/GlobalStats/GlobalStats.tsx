@@ -2,13 +2,15 @@ import { GLOBAL_STATS_NAMES } from '@utils/constants';
 import StatCard from '@components/StatCard/StatCard';
 import TitleWrapper from '@components/TitleWrapper/TitleWrapper';
 import GlobalStatsSection from '@components/GlobalStatsSection/GlobalStatsSection';
-import { GlobalStats } from '@utils/statsData';
+import { GlobalStats, GlobalStatsRegion } from '@utils/statsData';
+import LineChart from '@components/LineChart/LineChart';
 
 type GlobalStatsProps = {
-    stats: GlobalStats
-}
+    stats: GlobalStats;
+    historicalData: GlobalStatsRegion[];
+};
 
-const GlobalStats = ({ stats }: GlobalStatsProps) => {
+const GlobalStats = ({ stats, historicalData }: GlobalStatsProps) => {
     const aliases = GLOBAL_STATS_NAMES;
     const cases = { ...stats[0].cases };
     const deaths = { ...stats[0].deaths };
@@ -31,6 +33,13 @@ const GlobalStats = ({ stats }: GlobalStatsProps) => {
                     <StatCard
                         stat={['continent', stats[0]?.continent]}
                         aliases={aliases}
+                    />
+                </div>
+                <div>
+                    <LineChart
+                        stats={stats.response}
+                        statsGroup="country"
+                        historicalData={historicalData}
                     />
                 </div>
             </div>
