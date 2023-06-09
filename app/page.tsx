@@ -14,7 +14,6 @@ const DynamicCovidMap = dynamic(() => import('@components/CovidMap/CovidMap'), {
     ssr: false
 });
 
-
 export default async function Home() {
     const dataPoland = await getDataPoland();
     const allStatsPoland = getStructuredStatsPoland(dataPoland);
