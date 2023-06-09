@@ -2,8 +2,13 @@ import { GLOBAL_STATS_NAMES } from '@utils/constants';
 import StatCard from '@components/StatCard/StatCard';
 import TitleWrapper from '@components/TitleWrapper/TitleWrapper';
 import GlobalStatsSection from '@components/GlobalStatsSection/GlobalStatsSection';
+import { GlobalStats } from '@utils/statsData';
 
-const GlobalStats = ({ stats }) => {
+type GlobalStatsProps = {
+    stats: GlobalStats
+}
+
+const GlobalStats = ({ stats }: GlobalStatsProps) => {
     const aliases = GLOBAL_STATS_NAMES;
     const cases = { ...stats[0].cases };
     const deaths = { ...stats[0].deaths };

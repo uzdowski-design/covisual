@@ -1,5 +1,11 @@
 import { removeEmptyNumbers } from '@utils/statsData';
-const StatCard = ({ stat, aliases }) => {
+
+type StatCardProps = {
+    stat: [string, string | unknown];
+    aliases: { [key: string]: string };
+};
+
+const StatCard = ({ stat, aliases }: StatCardProps) => {
     const name = stat[0];
     const value = stat[1];
 
