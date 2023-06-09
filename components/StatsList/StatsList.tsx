@@ -4,11 +4,12 @@ import {
     POLAND_MAIN_STATS_NAMES,
     POLAND_REGION_STATS_NAMES
 } from '@utils/constants';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { StructuredEntry, regionsSort } from '@utils/statsData';
 
 import StatCard from '@components/StatCard/StatCard';
 import RegionStatsDropdown from './RegionStatsDropdown';
+import { useAppContext } from '@context/state';
 
 type StatsListProps = {
     stats: StructuredEntry,
@@ -25,8 +26,10 @@ const StatsList = ({ stats, statsGroup }:StatsListProps ) => {
     let aliases = {};
     const statsToDisplay = group[statsGroup];
 
+    const [state, setState] = useAppContext();
     const sortedRegions = regions.sort(regionsSort);
-    const [region, setRegion] = useState(sortedRegions[0]);
+
+    // const [region, setRegion] = useState(sortedRegions[0]);
 
     switch (statsGroup) {
         case 'total':
@@ -55,19 +58,19 @@ const StatsList = ({ stats, statsGroup }:StatsListProps ) => {
                 const newRegion = regions.filter(
                     (region) => region.name === e.target.value
                 );
-                setRegion(newRegion[0]);
+                setState((prev) => ({...prev, region: newRegion[0]}));
             };
 
             return (
                 <>
                     <RegionStatsDropdown
                         sortedRegions={sortedRegions}
-                        region={region}
+                        region={state.region}
                         handleChange={handleChange}
                     />
                     <div className="flex flex-wrap justify-center gap-4 mx-2">
-                        {region &&
-                            Object.entries(region)
+                        {state.region &&
+                            Object.entries(state.region)
                                 .filter((entry) => entry[0] !== 'name')
                                 .map((stat, index) => {
                                     return (

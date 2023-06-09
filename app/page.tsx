@@ -29,6 +29,7 @@ export default async function Home() {
             <Details
                 country="Polska"
                 latestStatsPoland={latestStatsPoland}
+                allStatsPoland={allStatsPoland}
             />
             <Sidebar globalStats={globalStats} />
         </div>

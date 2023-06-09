@@ -26,9 +26,9 @@ export default async function RootLayout({ children }: { children: ReactNode }):
     );
 
     return (
-        <ContextWrapper>
+        <ContextWrapper latestStatsPoland={latestStatsPoland}>
             <html lang="en">
-                <body className={inter.className}>
+                <body className={`${inter.className} max-h-[100vh]`  }>
                     <Header />
                     <main>{children}</main>
                     <Footer sourceDate={latestStatsPoland.sourceDate} />
