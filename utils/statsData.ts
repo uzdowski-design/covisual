@@ -102,8 +102,7 @@ export const getDataPoland = async () => {
     if (!response.ok) {
         throw new Error('Failed to fetch Poland data.');
     }
-    const data = await response.json();
-    return data;
+    return response.json();
 };
 
 export const getDataGlobal = async () => {
@@ -119,8 +118,7 @@ export const getDataGlobal = async () => {
     if (!response.ok) {
         throw new Error('Failed to fetch Global data.');
     }
-    const data = await response.json();
-    return data;
+    return response.json();
 };
 
 export const getCountryHistoricaldata = async (country) => {
