@@ -134,8 +134,7 @@ export const getCountryHistoricaldata = async (country) => {
     if (!response.ok) {
         throw new Error('Failed to fetch country historical data.');
     }
-    const data = await response.json();
-    return data;
+    return response.json();
 };
 
 export const getStructuredStatsPoland = (stats) => {

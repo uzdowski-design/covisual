@@ -4,7 +4,7 @@ import {
     POLAND_MAIN_STATS_NAMES,
     POLAND_REGION_STATS_NAMES
 } from '@utils/constants';
-import { useEffect, useState } from 'react';
+
 import { StructuredEntry, regionsSort } from '@utils/statsData';
 
 import StatCard from '@components/StatCard/StatCard';
@@ -28,8 +28,6 @@ const StatsList = ({ stats, statsGroup }: StatsListProps) => {
 
     const [state, setState] = useAppContext();
     const sortedRegions = regions.sort(regionsSort);
-
-    // const [region, setRegion] = useState(sortedRegions[0]);
 
     switch (statsGroup) {
         case 'total':

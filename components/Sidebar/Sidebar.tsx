@@ -1,4 +1,4 @@
-"use client";
+'use client';
 import {
     countriesSortByActiveCases,
     removeEmptyNumbers
@@ -10,7 +10,6 @@ import { GlobalStats } from '@utils/statsData';
 type SidebarProps = {
     globalStats: GlobalStats;
 };
-
 
 const Sidebar = ({ globalStats }: SidebarProps) => {
     const [state, setState] = useAppContext();
@@ -40,7 +39,12 @@ const Sidebar = ({ globalStats }: SidebarProps) => {
                         href={`/stats/${entry.country}`
                             .replace(/\s+/g, '-')
                             .toLowerCase()}
-                        onClick={() => setState((prev) => ({...prev, isSidebarVisible: !prev.isSidebarVisible}))}
+                        onClick={() =>
+                            setState((prev) => ({
+                                ...prev,
+                                isSidebarVisible: !prev.isSidebarVisible
+                            }))
+                        }
                     >
                         <li className="flex flex-row justify-between mx-4 border-b-sky-200 border-b-2">
                             <p>{entry.country}</p>
