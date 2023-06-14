@@ -6,7 +6,15 @@ An app for COVID-19 data visualisation. Displays country details on main page, a
 
 ## Getting Started
 
-First, run the development server:
+Install all dependencies:
+
+```
+npm install
+# or
+yarn install
+```
+
+Run the development server on localhost:
 
 ```bash
 npm run dev
